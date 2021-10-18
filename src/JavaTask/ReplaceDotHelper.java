@@ -7,7 +7,13 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 public class ReplaceDotHelper {
-    public void runReplace(String inputFilePath) {
+    String inputFilePath;
+
+    ReplaceDotHelper(String inputFilePath){
+        this.inputFilePath = inputFilePath;
+    }
+
+    public void runReplace() {
         String outputFilePath = inputFilePath.substring(0, inputFilePath.lastIndexOf("\\") + 1) + "output_file.txt";
         try (BufferedReader reader = new BufferedReader(new FileReader(inputFilePath));
              BufferedWriter writer = new BufferedWriter(new FileWriter(outputFilePath)))

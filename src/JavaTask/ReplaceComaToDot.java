@@ -7,7 +7,7 @@ public class ReplaceComaToDot {
         Scanner in = new Scanner(System.in);
         System.out.print("Input file path: ");
         String inputFilePath = in.nextLine();
-        ReplaceDotHelper helper = new ReplaceDotHelper();
-        helper.runReplace(inputFilePath);
+        ReplaceDotHelper helper = new ReplaceDotHelper(inputFilePath);
+        helper.runReplace();
     }
 }
