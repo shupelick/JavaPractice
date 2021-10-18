@@ -1,19 +1,13 @@
+package JavaTask;
+
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.Scanner;
 
-public class ReplaceComaToDot {
-    public static void main(String[] args) {
-        Scanner in = new Scanner(System.in);
-        System.out.print("Input file path: ");
-        String fileName = in.nextLine();
-        replaceComaToDot(fileName);
-    }
-
-    public static void replaceComaToDot(String inputFilePath){
+public class ReplaceDotHelper {
+    public void runReplace(String inputFilePath) {
         String outputFilePath = inputFilePath.substring(0, inputFilePath.lastIndexOf("\\") + 1) + "output_file.txt";
         try (BufferedReader reader = new BufferedReader(new FileReader(inputFilePath));
              BufferedWriter writer = new BufferedWriter(new FileWriter(outputFilePath)))
@@ -23,9 +17,9 @@ public class ReplaceComaToDot {
                 writer.write(line.replace(",", "."));
                 writer.newLine();
             }
+            System.out.println("Coma is replaced by dot in file: " + outputFilePath);
         } catch (IOException e){
-            e.printStackTrace();
+            System.out.println("File not found");
         }
-        System.out.print("Coma is replaced by dot in file: " + outputFilePath);
     }
 }
