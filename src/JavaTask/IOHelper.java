@@ -9,15 +9,31 @@ import java.io.IOException;
 public class IOHelper {
 
     String inputFilePath;
+    String outputFilePath;
+    BufferedReader reader;
+    BufferedWriter writer;
 
     IOHelper(String inputFilePath) {
         this.inputFilePath = inputFilePath;
+        this.outputFilePath = inputFilePath.substring(0, inputFilePath.lastIndexOf("\\") + 1) + "output_file" +
+                inputFilePath.substring(inputFilePath.lastIndexOf("."));
+
+        try {
+            reader = new BufferedReader(new FileReader(inputFilePath));
+        } catch (IOException e){
+            System.out.println("File not found");
+        }
+
+        try {
+            writer = new BufferedWriter(new FileWriter(outputFilePath));
+        } catch (IOException e){
+            System.out.println("File not found");
+        }
     }
 
     public String readLine() {
         StringBuilder fullText = new StringBuilder();
-        try (BufferedReader reader = new BufferedReader(new FileReader(inputFilePath)))
-        {
+        try {
             String line;
             while ((line = reader.readLine()) != null){
                 fullText.append(line);
@@ -31,13 +47,10 @@ public class IOHelper {
     }
 
     public void writeLine(String text) {
-        String outputFilePath = inputFilePath.substring(0, inputFilePath.lastIndexOf("\\") + 1) + "output_file" +
-                inputFilePath.substring(inputFilePath.lastIndexOf("."));
-
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(outputFilePath)))
-        {
+        try {
             writer.write(text);
             writer.newLine();
+            writer.flush();
             System.out.println("Coma is replaced by dot in file: " + outputFilePath);
         } catch (IOException e){
             System.out.println("File not found");

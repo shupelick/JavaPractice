@@ -1,5 +1,7 @@
 package JavaTask;
 
+
+import java.io.File;
 import java.util.Scanner;
 
 public class ReplaceComaToDot {
@@ -7,7 +9,12 @@ public class ReplaceComaToDot {
         Scanner in = new Scanner(System.in);
         System.out.print("Input file path: ");
         String inputFilePath = in.nextLine();
-        ReplaceDotHelper helper = new ReplaceDotHelper(inputFilePath);
-        helper.runReplace();
+        File inputFile = new File(inputFilePath);
+        if(inputFile.exists()) {
+            ReplaceDotHelper helper = new ReplaceDotHelper(inputFilePath);
+            helper.runReplace();
+        } else {
+            System.out.print("File doesn't exist");
+        }
     }
 }
