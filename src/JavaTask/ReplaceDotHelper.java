@@ -1,31 +1,20 @@
 package JavaTask;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
-
 public class ReplaceDotHelper {
+
     String inputFilePath;
+    IOHelper ioHelper;
 
     ReplaceDotHelper(String inputFilePath){
         this.inputFilePath = inputFilePath;
+        this.ioHelper = new IOHelper();
     }
 
     public void runReplace() {
-        String outputFilePath = inputFilePath.substring(0, inputFilePath.lastIndexOf("\\") + 1) + "output_file.txt";
-        try (BufferedReader reader = new BufferedReader(new FileReader(inputFilePath));
-             BufferedWriter writer = new BufferedWriter(new FileWriter(outputFilePath)))
-        {
-            String line;
-            while ((line = reader.readLine()) != null) {
-                writer.write(line.replace(",", "."));
-                writer.newLine();
-            }
-            System.out.println("Coma is replaced by dot in file: " + outputFilePath);
-        } catch (IOException e){
-            System.out.println("File not found");
+        String inputText = ioHelper.readLine(inputFilePath);
+        if (!inputText.equals("File not found")) {
+            String replacedText = inputText.replace(",", ".");
+            ioHelper.writeLine(replacedText, inputFilePath);
         }
     }
 }
