@@ -7,7 +7,14 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 public class IOHelper {
-    public String readLine(String inputFilePath) {
+
+    String inputFilePath;
+
+    IOHelper(String inputFilePath) {
+        this.inputFilePath = inputFilePath;
+    }
+
+    public String readLine() {
         StringBuilder fullText = new StringBuilder();
         try (BufferedReader reader = new BufferedReader(new FileReader(inputFilePath)))
         {
@@ -23,9 +30,10 @@ public class IOHelper {
         return "File not found";
     }
 
-    public void writeLine(String text, String inputFilePath) {
+    public void writeLine(String text) {
         String outputFilePath = inputFilePath.substring(0, inputFilePath.lastIndexOf("\\") + 1) + "output_file" +
                 inputFilePath.substring(inputFilePath.lastIndexOf("."));
+
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(outputFilePath)))
         {
             writer.write(text);

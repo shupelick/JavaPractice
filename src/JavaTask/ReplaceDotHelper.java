@@ -7,14 +7,14 @@ public class ReplaceDotHelper {
 
     ReplaceDotHelper(String inputFilePath){
         this.inputFilePath = inputFilePath;
-        this.ioHelper = new IOHelper();
+        this.ioHelper = new IOHelper(inputFilePath);
     }
 
     public void runReplace() {
-        String inputText = ioHelper.readLine(inputFilePath);
+        String inputText = ioHelper.readLine();
         if (!inputText.equals("File not found")) {
             String replacedText = inputText.replace(",", ".");
-            ioHelper.writeLine(replacedText, inputFilePath);
+            ioHelper.writeLine(replacedText);
         }
     }
 }
