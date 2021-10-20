@@ -6,15 +6,16 @@ import java.util.Scanner;
 
 public class ReplaceComaToDot {
     public static void main(String[] args) {
+        File inputFile;
+        String inputFilePath;
         Scanner in = new Scanner(System.in);
-        System.out.print("Input file path: ");
-        String inputFilePath = in.nextLine();
-        File inputFile = new File(inputFilePath);
-        if(inputFile.exists()) {
-            ReplaceDotHelper helper = new ReplaceDotHelper(inputFilePath);
-            helper.runReplace();
-        } else {
-            System.out.print("File doesn't exist");
-        }
+        do {
+            System.out.print("Input file path: ");
+            inputFilePath = in.nextLine();
+            inputFile = new File(inputFilePath);
+        } while (!inputFile.exists());
+        in.close();
+        ReplaceDotHelper helper = new ReplaceDotHelper(inputFilePath);
+        helper.runReplace();
     }
 }

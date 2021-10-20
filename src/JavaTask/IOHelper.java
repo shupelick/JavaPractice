@@ -39,6 +39,7 @@ public class IOHelper {
                 fullText.append(line);
                 fullText.append("\n");
             }
+            reader.close();
             return fullText.toString();
         } catch (IOException e){
             System.out.println("File not found");
@@ -52,6 +53,7 @@ public class IOHelper {
             writer.newLine();
             writer.flush();
             System.out.println("Coma is replaced by dot in file: " + outputFilePath);
+            writer.close();
         } catch (IOException e){
             System.out.println("File not found");
         }
