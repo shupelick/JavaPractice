@@ -2,19 +2,17 @@ package JavaTask;
 
 public class ReplaceDotHelper {
 
-    String inputFilePath;
-    IOHelper ioHelper;
+    IOHelperBase ioHelperBase;
 
-    ReplaceDotHelper(String inputFilePath){
-        this.inputFilePath = inputFilePath;
-        this.ioHelper = new IOHelper(inputFilePath);
+    ReplaceDotHelper(IOHelperBase ioHelperBase){
+        this.ioHelperBase = ioHelperBase;
     }
 
     public void runReplace() {
-        String inputText = ioHelper.readLine();
+        String inputText = ioHelperBase.readLine();
         if (!inputText.equals("File not found")) {
             String replacedText = inputText.replace(",", ".");
-            ioHelper.writeLine(replacedText);
+            ioHelperBase.writeLine(replacedText);
         }
     }
 }

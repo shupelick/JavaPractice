@@ -1,6 +1,5 @@
 package JavaTask;
 
-
 import java.io.File;
 import java.util.Scanner;
 
@@ -15,7 +14,8 @@ public class ReplaceComaToDot {
             inputFile = new File(inputFilePath);
         } while (!inputFile.exists());
         in.close();
-        ReplaceDotHelper helper = new ReplaceDotHelper(inputFilePath);
+        IOHelperBase ioHelperBase = new IOHelper(inputFilePath);
+        ReplaceDotHelper helper = new ReplaceDotHelper(ioHelperBase);
         helper.runReplace();
     }
 }

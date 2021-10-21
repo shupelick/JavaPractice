@@ -6,7 +6,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 
-public class IOHelper {
+public class IOHelper extends IOHelperBase {
 
     String inputFilePath;
     String outputFilePath;
