@@ -9,7 +9,7 @@ public class ReplaceComaToDot {
         String inputFilePath;
         String inputKeyWord;
         ReplaceDotHelper helper;
-        IOHelperBase ioHelperBase;
+        IOHelperBase ioHelperBase = new IOHelperBase();
         Scanner in = new Scanner(System.in);
 
         System.out.println("If you want to to use file, input keyword 'file'");
@@ -34,8 +34,6 @@ public class ReplaceComaToDot {
                 System.out.print("Input text: ");
                 ioHelperBase = new IOHelperConsole();
                 break;
-            default:
-                throw new IllegalStateException("Unexpected value: " + inputKeyWord);
         }
         helper = new ReplaceDotHelper(ioHelperBase);
         helper.runReplace();
